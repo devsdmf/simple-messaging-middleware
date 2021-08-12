@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 const Twilio = require('twilio');
 
+dotenv.config();
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const TWILIO_ACCOUNT_TOKEN = process.env.TWILIO_ACCOUNT_TOKEN;
 
