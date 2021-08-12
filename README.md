@@ -34,7 +34,7 @@ cd /path/to/the/project
 cp .env.sample .env && edit .env
 ```
 
-The `.env` file should have the both `TWILIO_ACCOUNT_SID` and `TWILIO_ACCOUNT_TOKEN` variables.
+The `.env` file should have the both `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` variables.
 
 ### Starting up the server
 

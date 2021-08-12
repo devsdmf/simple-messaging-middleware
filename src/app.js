@@ -5,10 +5,10 @@ const Twilio = require('twilio');
 
 dotenv.config();
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
-const TWILIO_ACCOUNT_TOKEN = process.env.TWILIO_ACCOUNT_TOKEN;
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
 
 const app = express();
-const client = new Twilio(TWILIO_ACCOUNT_SID, TWILIO_ACCOUNT_TOKEN);
+const client = new Twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.post('/messaging', (req, res) => {
+app.post('/messaging', Twilio.webhook(), (req, res) => {
   const inboundResourceSid = req.body.inboundResourceSid;
 
   if (inboundResourceSid.startsWith('SM')) {
