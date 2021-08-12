@@ -31,7 +31,7 @@ app.post('/messaging', (req, res) => {
 
     getOutboundMessage(serviceSid, sessionSid, interactionSid)
       .then(getMessageDetails)
-      .then(saveMessage)
+      .then(m => saveMessage(m.from, m.to, m.body))
       .then(() => sendResponse(res, 'ok'));
   } else {
     console.error('Invalid message prefix => ' + inboundResourceSid);
